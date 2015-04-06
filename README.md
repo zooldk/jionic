@@ -19,3 +19,5 @@ To retrieve status of a push message, you just have to get the message id of you
 ```java
 i.getPushStatus(messageId);
 ```
+
+All responses from the REST endpoints are in String types. Hence you can choose your own serializer (e.g jackson, Gson etc.) 
