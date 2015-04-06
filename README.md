@@ -13,3 +13,9 @@ i.push(json);
 ```
 
 The json input should, of course be correct JSON formated, otherwise an exception will arise.
+
+To retrieve status of a push message, you just have to get the message id of your previous push and pass it to this method:
+
+```java
+i.getPushStatus(messageId);
+```
