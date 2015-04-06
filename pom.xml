@@ -3,8 +3,38 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dk.braintrust.ionic</groupId>
 	<artifactId>push</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
+	<description>
+		A simple API wrapper for ionic
+	</description>
+	<url>https://github.com/zooldk/jionic</url>
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<distribution>repo</distribution>			
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:git:https://github.com/zooldk/jionic.git</connection>
+		<url>scm:git:https://github.com/zooldk/jionic.git</url>
+	</scm>
+	<developers>
+		<developer>
+			<id>zooldk</id>
+			<name>Steffen Larsen</name>
+			<email>slarsen@braintrust.dk</email>
+			<roles>
+				<role>
+					Owner and Lead Developer
+				</role>
+			</roles>
+		</developer>
+	</developers>
 
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<dependencies>
 
@@ -33,4 +63,49 @@
 		</dependency>
 
 	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>log4j-couchbase snapshots repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<repositories>
+
+		<repository>
+			<id>sonatype-oss-public</id>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>
