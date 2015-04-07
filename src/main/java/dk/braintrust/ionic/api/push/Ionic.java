@@ -5,11 +5,12 @@ import java.io.IOException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
@@ -48,10 +49,9 @@ public class Ionic {
 		request.addHeader("X-Ionic-Application-Id", APP_ID);
 		request.addHeader("content-type", ContentType.APPLICATION_JSON.toString());				
 		request.addHeader("Authorization", "Basic " + new String(SECRET_ENCODED));		
-		HttpClient client = HttpClientBuilder.create().build();
+		CloseableHttpClient client = HttpClientBuilder.create().build();
 		request.setEntity(new StringEntity(notification));
-		HttpEntity entity = client.execute(request).getEntity();
-		return EntityUtils.toString(entity, "UTF-8");
+		return executeSafeRequest(client, request);
 	}
 
 	/**
@@ -65,10 +65,20 @@ public class Ionic {
 		request.addHeader("X-Ionic-Application-Id", APP_ID);
 		request.addHeader("content-type", ContentType.APPLICATION_JSON.toString());				
 		request.addHeader("Authorization", "Basic " + new String(SECRET_ENCODED));		
-		HttpClient client = HttpClientBuilder.create().build();
-		HttpEntity entity = client.execute(request).getEntity();
-		return EntityUtils.toString(entity, "UTF-8");
+		CloseableHttpClient client = HttpClientBuilder.create().build();
+		return executeSafeRequest(client, request);
 	}
 	
 
+	private String executeSafeRequest(CloseableHttpClient client, HttpRequestBase request) throws ClientProtocolException, IOException {
+		HttpEntity entity = null;
+		String response = "";
+		try {
+			entity = client.execute(request).getEntity();
+			response = EntityUtils.toString(entity, "UTF-8");
+		} finally {
+			 client.close();
+		}
+		return response;
+	}
 }
