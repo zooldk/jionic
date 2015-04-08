@@ -1,6 +1,6 @@
 # jionic
-Java implementation of simple server side task for the ionic framework.
-First implementation is ionic push.
+Java implementation of simple server side task for the [ionic framework](http://ionicframework.com).
+First implementation is only ionic push.
 
 ## Installation
 
