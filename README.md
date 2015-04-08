@@ -10,8 +10,11 @@ Just add the following to your pom.xml :
 <dependency>
 	<groupId>dk.braintrust.ionic</groupId>
 	<artifactId>push</artifactId>
+	<version>0.2.0-SNAPSHOT</version>
 </dependency>
 ```
+
+PS: Snapshot release only at the moment. I will cleanup code and implement some more before making a real release. 
 
 ## Prerequisites
 
