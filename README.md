@@ -1,7 +1,17 @@
 # jionic
 Java implementation of simple server side task for the ionic framework.
-
 First implementation is ionic push.
+
+## Installation
+
+Just add the following to your pom.xml :
+
+```xml
+<dependency>
+	<groupId>dk.braintrust.ionic</groupId>
+	<artifactId>push</artifactId>
+</dependency>
+```
 
 ## Push
 
