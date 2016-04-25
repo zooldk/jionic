@@ -41,3 +41,9 @@ i.getPushStatus(messageId);
 ```
 
 All responses from the REST endpoints are in String types. Hence you can choose your own serializer (e.g jackson, Gson etc.) 
+
+# TODOs
+
+* Test new beta API
+* Spring boot enable it
+* package it and ship it to maven central repository
